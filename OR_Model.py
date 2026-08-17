@@ -38,11 +38,10 @@ for _ in range(1000):
     prediction = model(X)
     loss = loss_function(prediction,Y)
     
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
+    optimizer.zero_grad()       #clear old gradients
+    loss.backward()             #calculate how weights caused the error
+    optimizer.step()            # slightly improve weights
 
-print(f"Setup successful! Initial Loss: {loss.item():.4f}")
 
 # Test the model
 
