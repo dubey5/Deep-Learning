@@ -23,12 +23,12 @@ Y= torch.tensor(
 
 # One neuron: 2 inputs -> 1 output
 model= nn.Sequential(
-    nn.Linear(2,1),
-    nn.Sigmoid()
+    nn.Linear(2,1)
+    # nn.Sigmoid()
 )
 
 # Measure how wrong the prediction is
-loss_function = nn.BCELoss()
+loss_function = nn.BCEWithLogitsLoss()
 
 # Updates the model weight while training
 optimizer = torch.optim.SGD(model.parameters(),lr=0.1)
