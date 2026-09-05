@@ -20,7 +20,7 @@ Y= torch.tensor([
 # Multi layer perceptron model for XOR operation
 model= nn.Sequential(
     nn.Linear(2,4),  # First layer: 2 inputs → 4 hidden neurons
-    nn.ReLU(),    # non-linear activation function
+    nn.LeakyReLU(),    # non-linear activation function
     nn.Linear(4,1),  # Second layer: 4 hidden-neuron outputs → 1 final output
     nn.Sigmoid()     # Activation function - converts final result to a value from 0 to 1
 )
@@ -41,17 +41,9 @@ for _ in range(10000):
     optimizer.step()            # slightly improve weights
 
 
-Z= torch.tensor([
-    [1.0,1.0]
-])
-
 # Test the model
 with torch.no_grad():
-    predictions = model(Z)
+    predictions = model(X)
 
 print(predictions)
 print((predictions > 0.5).int())
-
-
-
-
